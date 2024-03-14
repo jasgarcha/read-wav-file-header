@@ -158,14 +158,14 @@ public class WavHeader {
 	public WavHeader(String wavHeader) throws Exception {
 		wavHeaderHexString = wavHeader.toUpperCase().trim();
 		String header;
-		if(wavHeaderHexString.indexOf(" ") == -1) { //No spaces.
+		if(!wavHeaderHexString.contains(" ")) { //No spaces.
 			header = wavHeaderHexString;
 		}			
 		else {
 			header = "";
 			String[] bytes = wavHeaderHexString.split(" ");
-			for(int i = 0; i < bytes.length; i++)
-				header += bytes[i];
+            for (String aByte : bytes)
+				header += aByte;
 		}
 		if(header.length() < 89)
 			throw new Exception("The WAV header size does not match the canonical WAV file format.");
@@ -214,9 +214,9 @@ public class WavHeader {
 		String header = "";
 		try {
 			headerBytes = fileInputStream.readNBytes(128);
-			for(int i = 0; i < headerBytes.length; i++) {
-				header += String.format("%02X", headerBytes[i] & 0xFF);
-			}
+            for (byte headerByte : headerBytes) {
+                header += String.format("%02X", headerByte & 0xFF);
+            }
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
