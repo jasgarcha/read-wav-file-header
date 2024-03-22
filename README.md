@@ -11,4 +11,4 @@ However, because the byte order is little endian, I first pass the input to reve
 
 For example, `ABCD -> (AB)(CD)-> (CD)(AB) -> CDAB`.
 
-The output is analogous to converting the bytes from big endian to little endian. In Java, the primitive `byte` data type is signed, ranging from -128 to 127, whereas I assume a byte is an unsigned 8-bit integer, ranging from 0 to 255. A bit mask was applied to offset signed bytes into the unsigned range, producing the desired decimal value.
+The output is analogous to converting the bytes from big endian to little endian. In Java, the primitive `byte` data type is signed, ranging from -128 to 127, whereas I assume a byte is an unsigned 8-bit integer, ranging from 0 to 255. A bit mask was applied to offset signed bytes into the unsigned range to produce the desired decimal value.
