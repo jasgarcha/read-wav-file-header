@@ -1,8 +1,10 @@
 # read-wav-file-header
-[Javadocs](https://jasgarcha.github.io/read-wav-file-header/)
+## [Javadocs](https://jasgarcha.github.io/read-wav-file-header/)
 
+## Usage
 `ReadWavHeader` is the main program that accepts the absolute path to a `.wav` file as an argument (absolute path with white spaces must be enclosed in double quotes, as per command line convention). If no argument is provided, the program runs as an input of the header as a hexadecimal string, so that a user can copy and paste bytes from a hex editor. The input is passed to the `WavHeader` class, which parses the header information that the program prints.
 
+## Logic
 The `wav.WavHeader` class parses the header of a `.wav` file and outputs the chunk size, subchunk 1 size, audio format, number of channels, sample rate, byte rate, block align, bits per sample, and subchunk 2 size. If the constant chunk Id (“RIFF”, “WAVE”), subchunk 1 Id (“fmt”), or subchunk 2 Id (“data”) do not match, the program throws an exception (the substring, corresponding to the header field, is extracted at breakpoints based on the field size).
 
 The hexadecimal string of the `wav` header is converted to decimal using the method `base16tobase10`. Following the binomial expansion theorem, each character’s base 10 value in this string is multiplied by 16 to the power of its position, and the values are summed.
